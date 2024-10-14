@@ -25,14 +25,14 @@ class Player(Sprite):
         self.coin_count = 0
     def get_keys(self):
         keys = pg.key.get_pressed()
-        if keys[pg.K_w]:
+        if keys[pg.K_UP]:
             self.vy -= self.speed
             print(self.vy)
-        if keys[pg.K_a]:
+        if keys[pg.K_LEFT]:
             self.vx -= self.speed
-        if keys[pg.K_s]:
+        if keys[pg.K_DOWN]:
             self.vy += self.speed
-        if keys[pg.K_d]:
+        if keys[pg.K_RIGHT]:
             self.vx += self.speed
     def collide_with_walls(self, dir):
         if dir == 'x':
@@ -70,7 +70,6 @@ class Player(Sprite):
             if str(hits[0].__class__.__name__) == "Coin":
                 print("I got a coin!!!")
                 self.coin_count += 1
-
     def update(self):
         self.get_keys()
         self.x += self.vx * self.game.dt
@@ -148,6 +147,5 @@ class Coin(Sprite):
         self.rect = self.image.get_rect()
         self.rect.x = x * TILESIZE
         self.rect.y = y * TILESIZE
-
 
 

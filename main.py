@@ -3,24 +3,13 @@
 # this is where we import libraries and modules
 import pygame as pg
 from settings import *
-#from sprites import *
 from sprites_side_scroller import *
 from tilemap import *
 from os import path
 # we are editing this file after installing git
 
 '''
-Elevator pitch: I want to create a game that follows an apprentice mage from the bottom of a tower to the top, leveling up as he climbs to the top to defeat the evil wizard...
-
-GOALS: to ascend the tower
-RULES: jump, cast spells, shields attack, cannot move up until puzzles and enemies defeated 
-FEEDBACK: Damage meter, spells interactions 
-FREEDOM: x and y movement with jump, platforming
-
-What's the sentence: Shoot iceblock with fireball melt iceblock to advance...
-
-Alpha goal: to create a sidescroller setup gravity, platform collision, jump
-
+Elevator pitch: I want to create a game where the chaacter has to climb up by jumping on platforms
 '''
 
 # create a game class that carries all the properties of the game and methods
@@ -116,4 +105,3 @@ if __name__ == "__main__":
   print("main is running...")
   g.new()
   g.run()
-  
