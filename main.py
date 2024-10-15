@@ -35,6 +35,7 @@ class Game:
     self.all_walls = pg.sprite.Group()
     self.all_powerups = pg.sprite.Group()
     self.all_coins = pg.sprite.Group()
+    self.all_platforms = pg.sprite.Group()
     # instantiating the class to create the player object 
     # self.player = Player(self, 5, 5)
     # self.mob = Mob(self, 100, 100)

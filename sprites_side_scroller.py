@@ -88,7 +88,7 @@ class Player(Sprite):
         hits = pg.sprite.spritecollide(self, group, kill)
         if hits:
             if str(hits[0].__class__.__name__) == "Powerup":
-                self.speed += 20
+                self.speed += 1
                 print("I've gotten a powerup!")
             if str(hits[0].__class__.__name__) == "Coin":
                 print("I got a coin!!!")
@@ -115,6 +115,9 @@ class Player(Sprite):
         # teleport the player to the other side of the screen
         self.collide_with_stuff(self.game.all_powerups, True)
         self.collide_with_stuff(self.game.all_coins, True)
+        if pg.sprite.spritecollideany(Player, Mob):
+            print("Game Over!")
+            self.playing = False  # End the game loop
 
 # added Mob - moving objects
 # it is a child class of Sprite
@@ -175,6 +178,22 @@ class Coin(Sprite):
         self.rect.x = x * TILESIZE
         self.rect.y = y * TILESIZE
 
+class Platform(Sprite):
+    def __init__(self, x, y):
+        super().__init__()
+        # Use width and height from settings
+        self.image = pg.Surface((PLATFORM_WIDTH, PLATFORM_HEIGHT))
+        self.image.fill(GREEN)
+        self.rect = self.image.get_rect()
+        self.rect.x = x
+        self.rect.y = y
+'''
+# Generate a new platform at a random position
+def generate_platform():
+    x = random.randint(0, WIDTH - PLATFORM_WIDTH)
+    y = random.randint(-50, -10)
+    return Platform(x, y)
+'''
 
             
   

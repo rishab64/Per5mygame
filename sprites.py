@@ -61,15 +61,17 @@ class Player(Sprite):
         #         print("not working...for hits")
         # # else:
         #     print("not working for dir check")
+'''
     def collide_with_stuff(self, group, kill):
         hits = pg.sprite.spritecollide(self, group, kill)
         if hits:
             if str(hits[0].__class__.__name__) == "Powerup":
-                self.speed += 20
+                self.speed += 1
                 print("I've gotten a powerup!")
             if str(hits[0].__class__.__name__) == "Coin":
                 print("I got a coin!!!")
                 self.coin_count += 1
+
     def update(self):
         self.get_keys()
         self.x += self.vx * self.game.dt
@@ -88,6 +90,7 @@ class Player(Sprite):
         # teleport the player to the other side of the screen
         self.collide_with_stuff(self.game.all_powerups, True)
         self.collide_with_stuff(self.game.all_coins, True)
+'''
 
 # added Mob - moving objects
 # it is a child class of Sprite
