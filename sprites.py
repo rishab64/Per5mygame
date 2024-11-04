@@ -151,4 +151,8 @@ class Coin(Sprite):
         self.rect.x = x * TILESIZE
         self.rect.y = y * TILESIZE
 
-
+try:
+    player_image = pg.image.load("bob.png")
+except pg.error as e:
+    print(f"Failed to load image: {e}")
+    SystemError.exit()
