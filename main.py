@@ -2,6 +2,7 @@
 # github test
 # this is where we import libraries and modules
 import pygame as pg
+from pygame.locals import *
 from settings import *
 from sprites_side_scroller import *
 from tilemap import *
@@ -22,6 +23,7 @@ class Game:
     self.clock = pg.time.Clock()
     self.screen = pg.display.set_mode((WIDTH, HEIGHT))
     pg.display.set_caption("Rishab's Coolest Game Ever...")
+    window.fill(WHITE)
     self.playing = True
   # this is where the game creates the stuff you see and hear
   def load_data(self):
