@@ -1,13 +1,19 @@
-# this file was created by: Rishab Manian
+# this file was created by: Rishab
 # github test
 # this is where we import libraries and modules
 import pygame as pg
-from pygame.locals import *
 from settings import *
-from sprites_side_scroller import *
+from utils import *
+# from sprites import *
+from sprites_vert_scroller import *
+# from sprites_side_scroller import *
+# from sprites_top_and_side import *
 from tilemap import *
 from os import path
+import random
 # we are editing this file after installing git
+# git test
+# git test
 
 '''
 Elevator pitch: I want to create a game where the chaacter has to climb up by jumping on platforms
@@ -41,13 +47,13 @@ class Game:
     self.all_coins = pg.sprite.Group()
     self.all_platforms = pg.sprite.Group()
     # instantiating the class to create the player object 
-    # self.player = Player(self, 5, 5)
-    # self.mob = Mob(self, 100, 100)
-    # self.wall = Wall(self, WIDTH//2, HEIGHT//2)
+    self.player = Player(self, 5, 5)
+    self.mob = Mob(self, 100, 100)
+    self.wall = Wall(self, WIDTH//2, HEIGHT//2)
     # # instantiates wall and mob objects
-    # for i in range(12):
-    #   Wall(self, TILESIZE*i, HEIGHT/2)
-    #   Mob(self, TILESIZE*i, TILESIZE*i)
+    for i in range(12):
+      Wall(self, TILESIZE*i, HEIGHT/2)
+      Mob(self, TILESIZE*i, TILESIZE*i)
     for row, tiles in enumerate(self.map.data):
       print(row*TILESIZE)
       for col, tile in enumerate(tiles):

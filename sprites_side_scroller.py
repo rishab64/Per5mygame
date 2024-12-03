@@ -1,5 +1,5 @@
 #This file was created by: Rishab Manian
-
+'''
 import pygame as pg
 from pygame.sprite import Sprite
 from settings import *
@@ -194,8 +194,7 @@ def generate_platform():
     y = random.randint(-50, -10)
     return Platform(x, y)
 '''
-
-            
+'''       
   
 
 
