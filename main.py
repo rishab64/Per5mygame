@@ -21,10 +21,12 @@ class Game:
     # sound mixer...
     pg.mixer.init()
     self.clock = pg.time.Clock()
-    self.screen = pg.display.set_mode((WIDTH, HEIGHT))
+    window = pg.display.set_mode((WIDTH, HEIGHT))
     pg.display.set_caption("Rishab's Coolest Game Ever...")
-    window.fill(WHITE)
+    window.fill((255,255,255))
+    pg.draw.rect(window,(0,0,22),[100,100,400,100],2)
     self.playing = True
+    pg.display.update()
   # this is where the game creates the stuff you see and hear
   def load_data(self):
     self.game_folder = path.dirname(__file__)
