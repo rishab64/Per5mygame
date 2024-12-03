@@ -1,8 +1,9 @@
 #This file was created by: Rishab Manian
-'''
+
 import pygame as pg
 from pygame.sprite import Sprite
 from settings import *
+import random
 from random import randint
 
 vec = pg.math.Vector2
@@ -30,16 +31,43 @@ class Player(Sprite):
         self.speed = 5
         # self.vx, self.vy = 0, 0
         self.coin_count = 0
-        self.jump_power = 20
-        self.jumping = False
+        def __init__(self, x, y, WIDTH, HEIGHT):
+        self.image = pg.Surface((WIDTH, HEIGHT))
+        self.image.fill(BLUE)
+        self.rect = self.image.get_rect(topleft=(x, y))
+        self.velocity_y = 0
+        self.on_ground = False
+        self.jump_count = 0
+        self.max_jumps = 2  # Allows double jump
+    
+        def handle_input(self):
+            keys = pg.key.get_pressed()
+            if keys[pg.K_SPACE] and self.jump_count < self.max_jumps:
+                self.velocity_y = JUMP_STRENGTH
+                self.jump_count += 1
+    
+    def update(self):
+        # Apply gravity
+        self.velocity_y += GRAVITY
+        self.rect.y += self.velocity_y
+        
+        # Simulate ground collision
+        if self.rect.bottom >= HEIGHT - 50:
+            self.rect.bottom = HEIGHT - 50
+            self.velocity_y = 0
+            self.on_ground = True
+            self.jump_count = 0  # Reset jump count when player hits the ground
+        else:
+            self.on_ground = False
+
     def get_keys(self):
         keys = pg.key.get_pressed()
-        # if keys[pg.K_w]:
-        #     self.vy -= self.speed
+        if keys[pg.K_w]:
+             self.vy -= self.speed
         if keys[pg.K_LEFT]:
             self.vel.x -= self.speed
-        # if keys[pg.K_s]:
-        #     self.vy += self.speed
+        if keys[pg.K_s]:
+             self.vy += self.speed
         if keys[pg.K_RIGHT]:
             self.vel.x += self.speed
         if keys[pg.K_SPACE]:
@@ -187,14 +215,27 @@ class Platform(Sprite):
         self.rect = self.image.get_rect()
         self.rect.x = x
         self.rect.y = y
-'''
-# Generate a new platform at a random position
+
+class SpeedSprite(pg.sprite.Sprite):
+    def __init__(self, x, y, width, height, color):
+        super().__init__()
+        self.image = pg.Surface((width, height))
+        self.image.fill(color)
+        self.rect = self.image.get_rect(topleft=(x, y))
+    
+    def apply_effect(self, player_speed):
+        effect = random.choice([-1, 1])  # Randomly choose to reduce or increase speed
+        new_speed = player_speed + effect
+        print(f"Speed changed by {effect}. New speed: {new_speed}")
+        return new_speed
+
+ #Generate a new platform at a random position
 def generate_platform():
     x = random.randint(0, WIDTH - PLATFORM_WIDTH)
     y = random.randint(-50, -10)
     return Platform(x, y)
-'''
-'''       
+
+     
   
 
 

@@ -3,9 +3,8 @@
 # this is where we import libraries and modules
 import pygame as pg
 from settings import *
-from utils import *
 # from sprites import *
-from sprites_vert_scroller import *
+from sprites_side_scroller import *
 # from sprites_side_scroller import *
 # from sprites_top_and_side import *
 from tilemap import *
