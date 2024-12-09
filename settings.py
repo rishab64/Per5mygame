@@ -26,3 +26,5 @@ platform_y = HEIGHT - 100
 
 GRAVITY = 0.5
 JUMP_STRENGTH = -10
+
+HS_FILE = "highscore_txt"

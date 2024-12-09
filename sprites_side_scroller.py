@@ -32,13 +32,13 @@ class Player(Sprite):
         # self.vx, self.vy = 0, 0
         self.coin_count = 0
         def __init__(self, x, y, WIDTH, HEIGHT):
-        self.image = pg.Surface((WIDTH, HEIGHT))
-        self.image.fill(BLUE)
-        self.rect = self.image.get_rect(topleft=(x, y))
-        self.velocity_y = 0
-        self.on_ground = False
-        self.jump_count = 0
-        self.max_jumps = 2  # Allows double jump
+            self.image = pg.Surface((WIDTH, HEIGHT))
+            self.image.fill(BLUE)
+            self.rect = self.image.get_rect(topleft=(x, y))
+            self.velocity_y = 0
+            self.on_ground = False
+            self.jump_count = 0
+            self.max_jumps = 2  # Allows double jump
     
         def handle_input(self):
             keys = pg.key.get_pressed()
