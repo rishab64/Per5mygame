@@ -21,15 +21,15 @@ class Player(Sprite):
         self.image = pg.Surface((32, 32))
         self.image.fill((255, 0, 0))
         self.rect = self.image.get_rect()
-        # self.rect.x = x
-        # self.rect.y = y
-        # self.x = x * TILESIZE
-        # self.y = y * TILESIZE
+        self.rect.x = x
+        self.rect.y = y
+        self.x = x * TILESIZE
+        self.y = y * TILESIZE
         self.pos = vec(x*TILESIZE, y*TILESIZE)
         self.vel = vec(0,0)
         self.acc = vec(0,0)
         self.speed = 5
-        # self.vx, self.vy = 0, 0
+        self.vx, self.vy = 0, 0
         self.coin_count = 0
         def __init__(self, x, y, WIDTH, HEIGHT):
             self.image = pg.Surface((WIDTH, HEIGHT))
@@ -93,9 +93,9 @@ class Player(Sprite):
                     self.pos.x = hits[0].rect.right
                 self.vel.x = 0
                 self.rect.x = self.pos.x
-            #     print("Collided on x axis")
-            # else:
-            #     print("not working...for hits")
+                print("Collided on x axis")
+            else:
+                print("not working...for hits")
         if dir == 'y':
             hits = pg.sprite.spritecollide(self, self.game.all_walls, False)
             if hits:
@@ -107,11 +107,11 @@ class Player(Sprite):
                 self.vel.y = 0
                 self.rect.y = self.pos.y
                 self.jumping = False
-                # print("Collided on x axis")
-        #     else:
-        #         print("not working...for hits")
-        # # else:
-        #     print("not working for dir check")
+                print("Collided on x axis")
+            else:
+                print("not working...for hits")
+        else:
+            print("not working for dir check")
     def collide_with_stuff(self, group, kill):
         hits = pg.sprite.spritecollide(self, group, kill)
         if hits:
@@ -125,8 +125,8 @@ class Player(Sprite):
     def update(self):
         self.acc = vec(0, GRAVITY)
         self.get_keys()
-        # self.x += self.vx * self.game.dt
-        # self.y += self.vy * self.game.dt
+        self.x += self.vx * self.game.dt
+        self.y += self.vy * self.game.dt
         self.acc.x += self.vel.x * FRICTION
         self.vel += self.acc
 
@@ -143,7 +143,7 @@ class Player(Sprite):
         # teleport the player to the other side of the screen
         self.collide_with_stuff(self.game.all_powerups, True)
         self.collide_with_stuff(self.game.all_coins, True)
-        if pg.sprite.spritecollideany(Player, Mob):
+        if pg.sprite.spritecollide(self.game.player, self.game.mob):
             print("Game Over!")
             self.playing = False  # End the game loop
 
