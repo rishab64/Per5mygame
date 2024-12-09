@@ -143,7 +143,7 @@ class Player(Sprite):
         # teleport the player to the other side of the screen
         self.collide_with_stuff(self.game.all_powerups, True)
         self.collide_with_stuff(self.game.all_coins, True)
-        if pg.sprite.spritecollide(self.game.player, self.game.mob):
+        if pg.sprite.spritecollide(self.game.player, self.game.mob, kill):
             print("Game Over!")
             self.playing = False  # End the game loop
 
